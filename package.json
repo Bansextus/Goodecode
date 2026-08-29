@@ -1,0 +1,165 @@
+{
+  "name": "goodecode",
+  "displayName": "Goodecode",
+  "description": "Python-first project tools for Goodebot, an independent workflow for robotics projects using compatible VEX V5 hardware.",
+  "version": "0.0.68",
+  "publisher": "BanSextus",
+  "author": {
+    "name": "BanSextus"
+  },
+  "license": "Apache-2.0",
+  "icon": "media/goodecode-icon.png",
+  "preview": false,
+  "galleryBanner": {
+    "color": "#132234",
+    "theme": "dark"
+  },
+  "homepage": "https://goodebot.net/goodecode/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bansextus/Goodecode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bansextus/Goodecode/issues"
+  },
+  "qna": false,
+  "main": "./extension.js",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:goodecode.sidebar",
+    "onCommand:goodecode.openStudio",
+    "onCommand:goodecode.refreshSidebar",
+    "onCommand:goodecode.openGoodebotDownload",
+    "onCommand:goodecode.openWorkspaceFolder",
+    "onCommand:goodecode.createStarterFiles",
+    "onCommand:goodecode.openSyntaxGuidePreview",
+    "onCommand:goodecode.createSingleScriptTemplate",
+    "onCommand:goodecode.migrateTemplateV2",
+    "onCommand:goodecode.exportGoodeFile"
+  ],
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "goodebot",
+    "goodecode",
+    "robotics",
+    "robot programming",
+    "vex",
+    "vex v5",
+    "competition robotics",
+    "hardware configuration",
+    "autonomous",
+    "python"
+  ],
+  "scripts": {
+    "test": "node test/public-boundary.test.js",
+    "package": "npx @vscode/vsce package",
+    "publish:patch": "npx @vscode/vsce publish patch",
+    "publish:minor": "npx @vscode/vsce publish minor"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "goodecode.openStudio",
+        "title": "Goodecode: Open Goodecode"
+      },
+      {
+        "command": "goodecode.refreshSidebar",
+        "title": "Goodecode: Refresh Sidebar",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "goodecode.openGoodebotDownload",
+        "title": "Goodecode: Download Goodebot"
+      },
+      {
+        "command": "goodecode.openWorkspaceFolder",
+        "title": "Goodecode: Reveal Workspace Folder"
+      },
+      {
+        "command": "goodecode.createStarterFiles",
+        "title": "Goodecode: Create Goodecode Project"
+      },
+      {
+        "command": "goodecode.openSyntaxGuidePreview",
+        "title": "Goodecode: Open Syntax Guide Preview"
+      },
+      {
+        "command": "goodecode.createSingleScriptTemplate",
+        "title": "Goodecode: Create Goodecode Python File"
+      },
+      {
+        "command": "goodecode.migrateTemplateV2",
+        "title": "Goodecode: Create Template 2.1 Migration Copy"
+      },
+      { "command": "goodecode.checkProject", "title": "Goodecode: Check Project" },
+      { "command": "goodecode.exportGoodeFile", "title": "Goodecode: Export for Goodebot" }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "goodecode",
+          "title": "Goodecode",
+          "icon": "media/goodecode-sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "goodecode": [
+        {
+          "type": "webview",
+          "id": "goodecode.sidebar",
+          "name": "Goodecode"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "goodecode.openStudio",
+          "when": "view == goodecode.sidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "goodecode.refreshSidebar",
+          "when": "view == goodecode.sidebar",
+          "group": "navigation"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "id": "goodecode",
+        "aliases": [
+          "Goodecode",
+          "goodecode"
+        ],
+        "extensions": [
+          ".goode.py",
+          ".goodecode",
+          ".goode"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "goodecode",
+        "scopeName": "source.goodecode",
+        "path": "./syntaxes/goodecode.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "goodecode",
+        "path": "./snippets/goodecode.json"
+      }
+    ]
+  }
+}

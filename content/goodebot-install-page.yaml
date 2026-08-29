@@ -1,0 +1,24 @@
+page:
+  eyebrow: "Goodebot"
+  title: "Open or Install Goodebot"
+  intro: "Use one clear Goodebot app on this Mac."
+
+status:
+  installed_title: "Installed"
+  ready_title: "Ready"
+  missing_title: "Install needed"
+  installed_prefix: "Installed:"
+  source_prefix: "Found:"
+  missing_body: "Install the latest Goodebot release into your user Applications folder."
+
+actions:
+  primary_label: "Install Latest"
+  installed_secondary_label: "Open Goodebot"
+  installed_scrub_label: "Scrub Goodebot"
+  missing_secondary_label: "Install Latest"
+
+sections:
+  - kind: "note"
+    style: "info"
+    title: "One App"
+    body: "Goodecode reuses the installed Goodebot app and avoids adding another copy by mistake."

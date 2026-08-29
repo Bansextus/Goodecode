@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goodebot.net/schemas/goodecode-package-v1.json",
+  "title": "Goodecode source package metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["formatVersion", "project", "createdBy"],
+  "properties": {
+    "formatVersion": { "const": 1 },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "entrypoint", "templateVersion", "targetFamily"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "entrypoint": { "type": "string", "pattern": "^src/[A-Za-z0-9._/-]+$" },
+        "templateVersion": { "type": "string" },
+        "targetFamily": { "type": "string" }
+      }
+    },
+    "createdBy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool", "version"],
+      "properties": { "tool": { "type": "string" }, "version": { "type": "string" } }
+    }
+  }
+}

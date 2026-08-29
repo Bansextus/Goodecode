@@ -1,0 +1,14 @@
+name: Bug report
+description: Report a Goodecode authoring or package-format problem.
+body:
+  - type: input
+    id: version
+    attributes: { label: Goodecode version }
+    validations: { required: true }
+  - type: textarea
+    id: problem
+    attributes: { label: What happened? }
+    validations: { required: true }
+  - type: textarea
+    id: reproduction
+    attributes: { label: Minimal reproduction without private team code }

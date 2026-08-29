@@ -1,0 +1,91 @@
+{
+  "Goodecode Lifecycle": {
+    "prefix": "goodecode-lifecycle",
+    "body": [
+      "from typing import Any",
+      "",
+      "",
+      "def initialize(ctx: Any) -> None:",
+      "    ctx.project_title(\"${1:My Robot}\")",
+      "    ctx.use_brain_icon(\"goodebot\")",
+      "    configure_robot(ctx)",
+      "    configure_programs(ctx)",
+      "",
+      "",
+      "def configure_robot(ctx: Any) -> None:",
+      "    # Configure only the motors, sensors, and pneumatics on this robot.",
+      "    ${2:pass}",
+      "",
+      "",
+      "def configure_programs(ctx: Any) -> None:",
+      "    ctx.program_profile(kind=\"practice\", name=\"${1:My Robot} Practice\", slot=1, autonomous=\"practice_autonomous\", driver_control=\"practice_driver_control\", brain_screen=\"practice_brain_screen\", allow_test_actions=True, allow_auton_selection=True)",
+      "    ctx.program_profile(kind=\"competition\", name=\"${1:My Robot} Competition\", slot=2, autonomous=\"competition_autonomous\", driver_control=\"competition_driver_control\", brain_screen=\"competition_brain_screen\", allow_test_actions=False, allow_auton_selection=False)",
+      "",
+      "",
+      "def practice_autonomous(ctx: Any) -> None:",
+      "    ctx.wait_ms(20)",
+      "",
+      "",
+      "def practice_driver_control(ctx: Any) -> None:",
+      "    while ctx.enabled():",
+      "        ctx.sleep_ms(${3:20})",
+      "",
+      "",
+      "def practice_brain_screen(ctx: Any) -> None:",
+      "    ctx.title(\"${1:My Robot} — Practice\")",
+      "",
+      "",
+      "def competition_autonomous(ctx: Any) -> None:",
+      "    ctx.wait_ms(20)",
+      "",
+      "",
+      "def competition_driver_control(ctx: Any) -> None:",
+      "    while ctx.enabled():",
+      "        ctx.sleep_ms(${3:20})",
+      "",
+      "",
+      "def competition_brain_screen(ctx: Any) -> None:",
+      "    ctx.title(\"${1:My Robot} — Competition\")"
+    ],
+    "description": "Canonical one-file Practice and Competition profile for Goodebot Software."
+  },
+  "Goodecode Info Screen": {
+    "prefix": "goodecode-screen",
+    "body": [
+      "def build_info_screen(ctx):",
+      "    ctx.title(\"${1:My Robot}\")",
+      "    ctx.info(\"Goodecode by BanSextus\")",
+      "    ctx.hardware_status()",
+      "    ctx.allow_project_ui_switch(${2:True})"
+    ],
+    "description": "Starter Goodecode info screen with Goodebot credits and hardware status."
+  },
+  "Goodecode Device Declarations": {
+    "prefix": "goodecode-devices",
+    "body": [
+      "import goode",
+      "",
+      "",
+      "left_drive = goode.Motor_Group_Dec(ports=[${1:-1}, ${2:-2}], name=\"${3:Left Drive}\", role=\"leftDrive\")",
+      "right_drive = goode.Motor_Group_Dec(ports=[${4:3}, ${5:4}], name=\"${6:Right Drive}\", role=\"rightDrive\")",
+      "arm = goode.Motor_Dec(port=${7:5}, name=\"${8:Arm}\", role=\"arm\", brake=\"hold\")",
+      "imu = goode.Sensor_Dec(port=${9:11}, name=\"${10:IMU}\", sensor=\"imu\")",
+      "clamp = goode.Pneumatic_Dec(bank=\"${11:A}\", name=\"${12:Clamp}\", default=${13:False})"
+    ],
+    "description": "One-line Goodecode declarations that Goodebot can import without guessing ports or names."
+  },
+  "Goodecode Chassis Tuning": {
+    "prefix": "goodecode-chassis",
+    "body": [
+      "def configure_robot(ctx):",
+      "    # Ports and physical dimensions come from Goodebot Hardware.",
+      "    ctx.auton_tuning(drive_distance_scale=${1:1.0}, turn_scale=${2:1.0}, max_accel=${3:0.65}, brake_strength=${4:0.42}, heading_hold_kp=${5:0.35}, drift_correction=${6:1.0})",
+      "    ctx.pid_drive_constants_set(kp=${7:0.45}, ki=${8:0.0}, kd=${9:1.8})",
+      "    ctx.pid_turn_constants_set(kp=${10:1.15}, ki=${11:0.0}, kd=${12:4.2})",
+      "    ctx.pid_drive_exit_condition_set(error=${13:0.75}, settle_ms=${14:180}, timeout_ms=${15:2500})",
+      "    ctx.pid_turn_exit_condition_set(error=${16:1.5}, settle_ms=${17:180}, timeout_ms=${18:2500})",
+      "    ctx.slew_drive_constants_set(rate=${19:0.62})"
+    ],
+    "description": "GoodeCode software overrides for Goodebot Runtime motion; physical measurements remain in Hardware."
+  }
+}

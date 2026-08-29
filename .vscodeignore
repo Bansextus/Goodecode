@@ -1,0 +1,12 @@
+**/.DS_Store
+**/.git
+**/.gitignore
+**/node_modules/**
+**/*.log
+**/*.vsix
+**/*.tgz
+test/**
+productLanguage.js
+media/**
+!media/goodecode-icon.png
+!media/goodecode-sidebar-icon.svg
