@@ -1,0 +1,6 @@
+{
+  "sdk": "2.0.0-beta.1",
+  "screenABI": 1,
+  "instructionSchema": 1,
+  "dependencies": {}
+}

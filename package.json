@@ -2,7 +2,7 @@
   "name": "goodecode",
   "displayName": "Goodecode",
   "description": "Python-first project tools for Goodebot, an independent workflow for robotics projects using compatible VEX V5 hardware.",
-  "version": "0.0.68",
+  "version": "1.0.2",
   "publisher": "BanSextus",
   "author": {
     "name": "BanSextus"
@@ -38,7 +38,8 @@
     "onCommand:goodecode.openSyntaxGuidePreview",
     "onCommand:goodecode.createSingleScriptTemplate",
     "onCommand:goodecode.migrateTemplateV2",
-    "onCommand:goodecode.exportGoodeFile"
+    "onCommand:goodecode.exportGoodeFile",
+    "onCommand:goodecode.captureBrainScreen"
   ],
   "categories": [
     "Programming Languages",
@@ -58,7 +59,7 @@
     "python"
   ],
   "scripts": {
-    "test": "node test/public-boundary.test.js",
+    "test": "node test/public-boundary.test.js && node test/authoring-current.test.js && node test/brain-capture.test.js",
     "package": "npx @vscode/vsce package",
     "publish:patch": "npx @vscode/vsce publish patch",
     "publish:minor": "npx @vscode/vsce publish minor"
@@ -98,8 +99,19 @@
         "command": "goodecode.migrateTemplateV2",
         "title": "Goodecode: Create Template 2.1 Migration Copy"
       },
-      { "command": "goodecode.checkProject", "title": "Goodecode: Check Project" },
-      { "command": "goodecode.exportGoodeFile", "title": "Goodecode: Export for Goodebot" }
+      {
+        "command": "goodecode.checkProject",
+        "title": "Goodecode: Check Project"
+      },
+      {
+        "command": "goodecode.exportGoodeFile",
+        "title": "Goodecode: Export for Goodebot"
+      },
+      {
+        "command": "goodecode.captureBrainScreen",
+        "title": "Goodecode: Capture Connected Brain Screen",
+        "icon": "$(device-camera)"
+      }
     ],
     "viewsContainers": {
       "activitybar": [
@@ -160,6 +172,20 @@
         "language": "goodecode",
         "path": "./snippets/goodecode.json"
       }
-    ]
-  }
+    ],
+    "configuration": {
+      "title": "Goodecode",
+      "properties": {
+        "goodecode.brainCaptureExecutable": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "description": "Absolute path to the updated Goodebot screen-capture helper. On macOS, the installed Goodebot app is found automatically."
+        }
+      }
+    }
+  },
+  "extensionKind": [
+    "ui"
+  ]
 }

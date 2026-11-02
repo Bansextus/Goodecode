@@ -20,3 +20,12 @@ One concept under consideration for V5.1 is a separate, proprietary Goodebot Dev
 A Goodebot user would select that mod package from the normal import experience. Goodebot would install the package only after validation, then discover and import the modified `.goode` projects associated with it through the same source-first workflow used by official projects. The mod package could carry its own Digital Twin presentation while the proprietary runtime and hardware boundary remain inside Goodebot.
 
 This is a design direction, not a released specification. The extension, filename convention, manifest, signing and trust model, permissions, compatibility rules, update behavior, sandboxing, Digital Twin API, and sharing policy are intentionally undecided. No current release loads third-party mod packages, and developers should not build against `.goode-<mod-name>` as though it were stable.
+
+## Goodecode 2 developer beta
+
+An opt-in source SDK now lives in `sdk/`, with native screen ABI 1, language adapters,
+format 2 modded packages, native desktop preview, and the private Cortex integration.
+Build the separate extension with `node scripts/build-beta.js OUTPUT_DIRECTORY`.
+Stable Goodecode and its provider registration remain unchanged. See `sdk/README.md`
+for the implemented beta contract and hardware acceptance requirements. This does not
+release a public Goodebot Dev app or the proprietary Cortex compiler.

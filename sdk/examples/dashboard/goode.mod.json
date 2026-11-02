@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "example.native-dashboard",
+  "sdkVersion": "2.0.0-beta.1",
+  "cortexCompatibility": "v5-native-screen-1",
+  "renderer": {
+    "entry": "renderer/screen.c",
+    "abiVersion": 1,
+    "language": "c"
+  },
+  "adapter": {
+    "language": "python",
+    "entry": "authoring/program.py"
+  }
+}

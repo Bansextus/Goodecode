@@ -1,0 +1,4 @@
+name = "Native Dashboard"
+entry = "src/main.goode.py"
+template_version = "2.1"
+target = "compatible-v5"

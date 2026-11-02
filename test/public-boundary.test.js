@@ -5,6 +5,22 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 const { checkProject, buildPackage, safeRelativePath } = require("../src/project");
+const { renderSidebar } = require("../src/sidebar");
+
+const sidebar = renderSidebar({
+  webview: { cspSource: "vscode-webview-resource:" },
+  logoUri: "vscode-webview-resource:/goodecode-icon.png",
+  workspaceName: "Robot & Friends",
+  projectName: "Robot & Friends",
+  state: "ready",
+  sourceName: "src/main.goode.py",
+});
+assert.match(sidebar, /goodecode-icon\.png/, "Sidebar must use the existing Goodecode logo.");
+assert.match(sidebar, /Robot &amp; Friends/, "Workspace names must be HTML-escaped.");
+assert.match(sidebar, /data-command="openStudio"/, "The sidebar should open code in the editor.");
+assert.match(sidebar, /0 0 15px rgba\(255,211,79/, "Sidebar buttons should glow yellow on hover.");
+assert.match(sidebar, /\.action:not\(\[disabled\]\):hover/, "Disabled buttons should not glow.");
+assert.doesNotMatch(sidebar, /<iframe/, "Code should remain in the VS Code editor, not a duplicate studio frame.");
 
 assert.equal(safeRelativePath("src/main.goode.py"), true);
 assert.equal(safeRelativePath("../private.py"), false);

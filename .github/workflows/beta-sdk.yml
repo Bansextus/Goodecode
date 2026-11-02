@@ -1,0 +1,15 @@
+name: Beta SDK
+on:
+  push:
+    branches: [codex/goodecode-2-beta]
+  pull_request:
+jobs:
+  sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test sdk/test/sdk.test.js
+      - run: node scripts/build-beta.js /tmp/goodecode-beta

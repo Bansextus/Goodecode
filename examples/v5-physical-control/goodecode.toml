@@ -1,0 +1,16 @@
+schema_version = 2
+template_version = "2.1"
+
+[project]
+name = "V5 Physical Control Example"
+language = "python"
+entry = "src/main.goode.py"
+
+[brain]
+icon = "goodecode"
+
+[export]
+target = "goodebot-runtime"
+compatibility = "goodebot-digital-brain"
+default_slot_name = "V5 Physical Example"
+runtime_artifact = "runtime/goodebot_deployment.json"

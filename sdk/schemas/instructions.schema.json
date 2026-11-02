@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Goodecode portable instruction document 1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "name",
+    "configuration",
+    "autonomous",
+    "driver"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "configuration": {
+      "type": "array",
+      "maxItems": 2048,
+      "items": {
+        "type": "object",
+        "required": [
+          "op",
+          "args"
+        ],
+        "properties": {
+          "op": {
+            "enum": [
+              "motor",
+              "motor_group",
+              "pneumatic",
+              "imu",
+              "drivetrain_ports",
+              "drive_mode"
+            ]
+          },
+          "positional": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/literal"
+            }
+          },
+          "args": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[_a-zA-Z][_a-zA-Z0-9]*$"
+            },
+            "additionalProperties": {
+              "$ref": "#/$defs/literal"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "autonomous": {
+      "type": "array",
+      "maxItems": 2048,
+      "items": {
+        "type": "object",
+        "required": [
+          "op",
+          "args"
+        ],
+        "properties": {
+          "op": {
+            "enum": [
+              "status",
+              "wait_ms",
+              "sleep_ms",
+              "drive_for",
+              "turn_for",
+              "turn_to_heading",
+              "run_motor",
+              "stop",
+              "motor_group_command",
+              "pneumatic_on",
+              "pneumatic_off",
+              "pneumatic_toggle",
+              "tank_drive",
+              "arcade_drive",
+              "bind_motor_group",
+              "bind_button_sequence"
+            ]
+          },
+          "positional": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/literal"
+            }
+          },
+          "args": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[_a-zA-Z][_a-zA-Z0-9]*$"
+            },
+            "additionalProperties": {
+              "$ref": "#/$defs/literal"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "driver": {
+      "type": "array",
+      "maxItems": 2048,
+      "items": {
+        "type": "object",
+        "required": [
+          "op",
+          "args"
+        ],
+        "properties": {
+          "op": {
+            "enum": [
+              "status",
+              "wait_ms",
+              "sleep_ms",
+              "drive_for",
+              "turn_for",
+              "turn_to_heading",
+              "run_motor",
+              "stop",
+              "motor_group_command",
+              "pneumatic_on",
+              "pneumatic_off",
+              "pneumatic_toggle",
+              "tank_drive",
+              "arcade_drive",
+              "bind_motor_group",
+              "bind_button_sequence"
+            ]
+          },
+          "positional": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/literal"
+            }
+          },
+          "args": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^[_a-zA-Z][_a-zA-Z0-9]*$"
+            },
+            "additionalProperties": {
+              "$ref": "#/$defs/literal"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "literal": {
+      "anyOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/literal"
+          }
+        }
+      ]
+    }
+  }
+}
